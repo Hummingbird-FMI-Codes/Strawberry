@@ -22,7 +22,7 @@ def get_gps_position():
     return {
         "latitude": latitude,
         "longitude": longitude,
-        "timestamp": parts[1]
+        "timestamp": parts[1] # 023356.000 → Time (UTC) → 02:33:56.000 (hhmmss.sss)
     }
 
 # '4807.038' N -> 48.1173
