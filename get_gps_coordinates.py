@@ -8,16 +8,16 @@ def get_line(file_path):
     with open(file_path, "r") as file:
         for line in file:
             if line.startswith("$GNRMC"):
-                return line
+                parts = line.split(",")
+                if (parts[2] == 'A'):
+                    return parts
 
 def get_gps_position():
     os.system("sudo chmod 666 /dev/ttyS0")
-    line = get_line("/dev/ttyS0")
-    parts = line.split(",")
+    parts = get_line("/dev/ttyS0")
 
-    if parts[2] == "A": # valid data
-        latitude = nmea_to_decimal(parts[3], parts[4])
-        longitude = nmea_to_decimal(parts[5], parts[6])
+    latitude = nmea_to_decimal(parts[3], parts[4])
+    longitude = nmea_to_decimal(parts[5], parts[6])
 
     return {
         "latitude": latitude,
