@@ -1,4 +1,3 @@
-import time
 import os
 
 def get_line(file_path):
